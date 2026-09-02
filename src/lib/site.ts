@@ -1,24 +1,24 @@
-import logoAsset from "@/assets/logo-navbar.png.asset.json";
-import logoWhiteAsset from "@/assets/logo-branca.png.asset.json";
-import munck from "@/assets/munck-industrial.webp.asset.json";
-import icamento from "@/assets/icamento-aereo.webp.asset.json";
-import cargaMwm from "@/assets/carga-mwm-galpao.webp.asset.json";
-import gerador from "@/assets/operacao-gerador.webp.asset.json";
-import carregamento from "@/assets/carregamento-mwm.webp.asset.json";
-import remocao from "@/assets/remocao-tecnica.webp.asset.json";
-import transporte from "@/assets/transporte-industrial.webp.asset.json";
+import logoImg from "@/assets/logo-navbar.webp";
+import logoWhiteImg from "@/assets/logo-branca.webp";
+import munck from "@/assets/munck-industrial.webp";
+import icamento from "@/assets/icamento-aereo.webp";
+import cargaMwm from "@/assets/carga-mwm-galpao.webp";
+import gerador from "@/assets/operacao-gerador.webp";
+import carregamento from "@/assets/carregamento-mwm.webp";
+import remocao from "@/assets/remocao-tecnica.webp";
+import transporte from "@/assets/transporte-industrial.webp";
 
-export const logo = logoAsset.url;
-export const logoWhite = logoWhiteAsset.url;
+export const logo = logoImg;
+export const logoWhite = logoWhiteImg;
 
 export const photos = {
-  munck: munck.url,
-  icamento: icamento.url,
-  cargaMwm: cargaMwm.url,
-  gerador: gerador.url,
-  carregamento: carregamento.url,
-  remocao: remocao.url,
-  transporte: transporte.url,
+  munck,
+  icamento,
+  cargaMwm,
+  gerador,
+  carregamento,
+  remocao,
+  transporte,
 };
 
 export const contact = {
