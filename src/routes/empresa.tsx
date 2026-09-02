@@ -65,12 +65,6 @@ function Empresa() {
           </div>
           <Reveal delay={100} className="grid gap-4 sm:grid-cols-2">
             <img
-              src={photos.carga}
-              alt=""
-              className="hidden"
-              aria-hidden="true"
-            />
-            <img
               src={photos.icamento}
               alt="Içamento de estrutura metálica entre galpões industriais"
               loading="lazy"
