@@ -1,5 +1,5 @@
-import logoAsset from "@/assets/logo-siga-brasil.png.asset.json";
-import logoWhiteAsset from "@/assets/logo-siga-brasil-branco.png.asset.json";
+import logoAsset from "@/assets/logo-navbar.png.asset.json";
+import logoWhiteAsset from "@/assets/logo-branca.png.asset.json";
 import munck from "@/assets/munck-industrial.webp.asset.json";
 import icamento from "@/assets/icamento-aereo.webp.asset.json";
 import cargaMwm from "@/assets/carga-mwm-galpao.webp.asset.json";
