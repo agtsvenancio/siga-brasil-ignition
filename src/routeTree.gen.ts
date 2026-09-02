@@ -10,33 +10,202 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CargasRouteImport } from './routes/cargas'
+import { Route as CasesRouteImport } from './routes/cases'
+import { Route as ClientesRouteImport } from './routes/clientes'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as DiferenciaisRouteImport } from './routes/diferenciais'
+import { Route as EmpresaRouteImport } from './routes/empresa'
+import { Route as EstruturaRouteImport } from './routes/estrutura'
+import { Route as OrcamentoRouteImport } from './routes/orcamento'
+import { Route as ProcessoRouteImport } from './routes/processo'
+import { Route as SegmentosRouteImport } from './routes/segmentos'
+import { Route as SolucoesRouteImport } from './routes/solucoes'
+import { Route as SolucoesIndexRouteImport } from './routes/solucoes.index'
+import { Route as SolucoesSlugRouteImport } from './routes/solucoes.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CargasRoute = CargasRouteImport.update({
+  id: '/cargas',
+  path: '/cargas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientesRoute = ClientesRouteImport.update({
+  id: '/clientes',
+  path: '/clientes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiferenciaisRoute = DiferenciaisRouteImport.update({
+  id: '/diferenciais',
+  path: '/diferenciais',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmpresaRoute = EmpresaRouteImport.update({
+  id: '/empresa',
+  path: '/empresa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EstruturaRoute = EstruturaRouteImport.update({
+  id: '/estrutura',
+  path: '/estrutura',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrcamentoRoute = OrcamentoRouteImport.update({
+  id: '/orcamento',
+  path: '/orcamento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessoRoute = ProcessoRouteImport.update({
+  id: '/processo',
+  path: '/processo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SegmentosRoute = SegmentosRouteImport.update({
+  id: '/segmentos',
+  path: '/segmentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolucoesRoute = SolucoesRouteImport.update({
+  id: '/solucoes',
+  path: '/solucoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolucoesIndexRoute = SolucoesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SolucoesRoute,
+} as any)
+const SolucoesSlugRoute = SolucoesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => SolucoesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cargas': typeof CargasRoute
+  '/cases': typeof CasesRoute
+  '/clientes': typeof ClientesRoute
+  '/contato': typeof ContatoRoute
+  '/diferenciais': typeof DiferenciaisRoute
+  '/empresa': typeof EmpresaRoute
+  '/estrutura': typeof EstruturaRoute
+  '/orcamento': typeof OrcamentoRoute
+  '/processo': typeof ProcessoRoute
+  '/segmentos': typeof SegmentosRoute
+  '/solucoes': typeof SolucoesRouteWithChildren
+  '/solucoes/$slug': typeof SolucoesSlugRoute
+  '/solucoes/': typeof SolucoesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cargas': typeof CargasRoute
+  '/cases': typeof CasesRoute
+  '/clientes': typeof ClientesRoute
+  '/contato': typeof ContatoRoute
+  '/diferenciais': typeof DiferenciaisRoute
+  '/empresa': typeof EmpresaRoute
+  '/estrutura': typeof EstruturaRoute
+  '/orcamento': typeof OrcamentoRoute
+  '/processo': typeof ProcessoRoute
+  '/segmentos': typeof SegmentosRoute
+  '/solucoes/$slug': typeof SolucoesSlugRoute
+  '/solucoes': typeof SolucoesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cargas': typeof CargasRoute
+  '/cases': typeof CasesRoute
+  '/clientes': typeof ClientesRoute
+  '/contato': typeof ContatoRoute
+  '/diferenciais': typeof DiferenciaisRoute
+  '/empresa': typeof EmpresaRoute
+  '/estrutura': typeof EstruturaRoute
+  '/orcamento': typeof OrcamentoRoute
+  '/processo': typeof ProcessoRoute
+  '/segmentos': typeof SegmentosRoute
+  '/solucoes': typeof SolucoesRouteWithChildren
+  '/solucoes/$slug': typeof SolucoesSlugRoute
+  '/solucoes/': typeof SolucoesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cargas'
+    | '/cases'
+    | '/clientes'
+    | '/contato'
+    | '/diferenciais'
+    | '/empresa'
+    | '/estrutura'
+    | '/orcamento'
+    | '/processo'
+    | '/segmentos'
+    | '/solucoes'
+    | '/solucoes/$slug'
+    | '/solucoes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/cargas'
+    | '/cases'
+    | '/clientes'
+    | '/contato'
+    | '/diferenciais'
+    | '/empresa'
+    | '/estrutura'
+    | '/orcamento'
+    | '/processo'
+    | '/segmentos'
+    | '/solucoes/$slug'
+    | '/solucoes'
+  id:
+    | '__root__'
+    | '/'
+    | '/cargas'
+    | '/cases'
+    | '/clientes'
+    | '/contato'
+    | '/diferenciais'
+    | '/empresa'
+    | '/estrutura'
+    | '/orcamento'
+    | '/processo'
+    | '/segmentos'
+    | '/solucoes'
+    | '/solucoes/$slug'
+    | '/solucoes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CargasRoute: typeof CargasRoute
+  CasesRoute: typeof CasesRoute
+  ClientesRoute: typeof ClientesRoute
+  ContatoRoute: typeof ContatoRoute
+  DiferenciaisRoute: typeof DiferenciaisRoute
+  EmpresaRoute: typeof EmpresaRoute
+  EstruturaRoute: typeof EstruturaRoute
+  OrcamentoRoute: typeof OrcamentoRoute
+  ProcessoRoute: typeof ProcessoRoute
+  SegmentosRoute: typeof SegmentosRoute
+  SolucoesRoute: typeof SolucoesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +217,127 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cargas': {
+      id: '/cargas'
+      path: '/cargas'
+      fullPath: '/cargas'
+      preLoaderRoute: typeof CargasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clientes': {
+      id: '/clientes'
+      path: '/clientes'
+      fullPath: '/clientes'
+      preLoaderRoute: typeof ClientesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diferenciais': {
+      id: '/diferenciais'
+      path: '/diferenciais'
+      fullPath: '/diferenciais'
+      preLoaderRoute: typeof DiferenciaisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/empresa': {
+      id: '/empresa'
+      path: '/empresa'
+      fullPath: '/empresa'
+      preLoaderRoute: typeof EmpresaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/estrutura': {
+      id: '/estrutura'
+      path: '/estrutura'
+      fullPath: '/estrutura'
+      preLoaderRoute: typeof EstruturaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orcamento': {
+      id: '/orcamento'
+      path: '/orcamento'
+      fullPath: '/orcamento'
+      preLoaderRoute: typeof OrcamentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/processo': {
+      id: '/processo'
+      path: '/processo'
+      fullPath: '/processo'
+      preLoaderRoute: typeof ProcessoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/segmentos': {
+      id: '/segmentos'
+      path: '/segmentos'
+      fullPath: '/segmentos'
+      preLoaderRoute: typeof SegmentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solucoes': {
+      id: '/solucoes'
+      path: '/solucoes'
+      fullPath: '/solucoes'
+      preLoaderRoute: typeof SolucoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solucoes/': {
+      id: '/solucoes/'
+      path: '/'
+      fullPath: '/solucoes/'
+      preLoaderRoute: typeof SolucoesIndexRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
+    '/solucoes/$slug': {
+      id: '/solucoes/$slug'
+      path: '/$slug'
+      fullPath: '/solucoes/$slug'
+      preLoaderRoute: typeof SolucoesSlugRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
   }
 }
 
+interface SolucoesRouteChildren {
+  SolucoesSlugRoute: typeof SolucoesSlugRoute
+  SolucoesIndexRoute: typeof SolucoesIndexRoute
+}
+
+const SolucoesRouteChildren: SolucoesRouteChildren = {
+  SolucoesSlugRoute: SolucoesSlugRoute,
+  SolucoesIndexRoute: SolucoesIndexRoute,
+}
+
+const SolucoesRouteWithChildren = SolucoesRoute._addFileChildren(
+  SolucoesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CargasRoute: CargasRoute,
+  CasesRoute: CasesRoute,
+  ClientesRoute: ClientesRoute,
+  ContatoRoute: ContatoRoute,
+  DiferenciaisRoute: DiferenciaisRoute,
+  EmpresaRoute: EmpresaRoute,
+  EstruturaRoute: EstruturaRoute,
+  OrcamentoRoute: OrcamentoRoute,
+  ProcessoRoute: ProcessoRoute,
+  SegmentosRoute: SegmentosRoute,
+  SolucoesRoute: SolucoesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
