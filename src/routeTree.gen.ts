@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CargasRouteImport } from './routes/cargas'
 import { Route as CasesRouteImport } from './routes/cases'
 import { Route as ClientesRouteImport } from './routes/clientes'
+import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as DiferenciaisRouteImport } from './routes/diferenciais'
 import { Route as EmpresaRouteImport } from './routes/empresa'
 import { Route as EstruturaRouteImport } from './routes/estrutura'
@@ -40,6 +41,11 @@ const CasesRoute = CasesRouteImport.update({
 const ClientesRoute = ClientesRouteImport.update({
   id: '/clientes',
   path: '/clientes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DiferenciaisRoute = DiferenciaisRouteImport.update({
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/cargas': typeof CargasRoute
   '/cases': typeof CasesRoute
   '/clientes': typeof ClientesRoute
+  '/contato': typeof ContatoRoute
   '/diferenciais': typeof DiferenciaisRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/cargas': typeof CargasRoute
   '/cases': typeof CasesRoute
   '/clientes': typeof ClientesRoute
+  '/contato': typeof ContatoRoute
   '/diferenciais': typeof DiferenciaisRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/cargas': typeof CargasRoute
   '/cases': typeof CasesRoute
   '/clientes': typeof ClientesRoute
+  '/contato': typeof ContatoRoute
   '/diferenciais': typeof DiferenciaisRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/cargas'
     | '/cases'
     | '/clientes'
+    | '/contato'
     | '/diferenciais'
     | '/empresa'
     | '/estrutura'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/cargas'
     | '/cases'
     | '/clientes'
+    | '/contato'
     | '/diferenciais'
     | '/empresa'
     | '/estrutura'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '/cargas'
     | '/cases'
     | '/clientes'
+    | '/contato'
     | '/diferenciais'
     | '/empresa'
     | '/estrutura'
@@ -174,6 +186,7 @@ export interface RootRouteChildren {
   CargasRoute: typeof CargasRoute
   CasesRoute: typeof CasesRoute
   ClientesRoute: typeof ClientesRoute
+  ContatoRoute: typeof ContatoRoute
   DiferenciaisRoute: typeof DiferenciaisRoute
   EmpresaRoute: typeof EmpresaRoute
   EstruturaRoute: typeof EstruturaRoute
@@ -210,6 +223,13 @@ declare module '@tanstack/react-router' {
       path: '/clientes'
       fullPath: '/clientes'
       preLoaderRoute: typeof ClientesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/diferenciais': {
@@ -290,6 +310,7 @@ const rootRouteChildren: RootRouteChildren = {
   CargasRoute: CargasRoute,
   CasesRoute: CasesRoute,
   ClientesRoute: ClientesRoute,
+  ContatoRoute: ContatoRoute,
   DiferenciaisRoute: DiferenciaisRoute,
   EmpresaRoute: EmpresaRoute,
   EstruturaRoute: EstruturaRoute,
