@@ -10,19 +10,6 @@ export function SiteHeader() {
 
   return (
     <>
-      <div className="hidden bg-graphite text-background/80 lg:block">
-        <div className="container-site flex h-10 items-center justify-between text-xs">
-          <p>{contact.coverage} • Base operacional em Guarulhos/SP</p>
-          <div className="flex items-center gap-6">
-            <a className="hover:text-primary" href={`tel:+${contact.phoneRaw}`}>
-              {contact.phoneLabel}
-            </a>
-            <a className="hover:text-primary" href={`mailto:${contact.email}`}>
-              {contact.email}
-            </a>
-          </div>
-        </div>
-      </div>
 
       <header className="sticky top-0 z-50 border-b border-border/80 bg-background/95 backdrop-blur">
         <div className="container-site flex h-18 items-center justify-between gap-4 py-3">
