@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CargasRouteImport } from './routes/cargas'
+import { Route as CasesRouteImport } from './routes/cases'
 import { Route as DiferenciaisRouteImport } from './routes/diferenciais'
 import { Route as EmpresaRouteImport } from './routes/empresa'
 import { Route as EstruturaRouteImport } from './routes/estrutura'
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const CargasRoute = CargasRouteImport.update({
   id: '/cargas',
   path: '/cargas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DiferenciaisRoute = DiferenciaisRouteImport.update({
@@ -74,6 +80,7 @@ const SolucoesSlugRoute = SolucoesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cargas': typeof CargasRoute
+  '/cases': typeof CasesRoute
   '/diferenciais': typeof DiferenciaisRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cargas': typeof CargasRoute
+  '/cases': typeof CasesRoute
   '/diferenciais': typeof DiferenciaisRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cargas': typeof CargasRoute
+  '/cases': typeof CasesRoute
   '/diferenciais': typeof DiferenciaisRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/cargas'
+    | '/cases'
     | '/diferenciais'
     | '/empresa'
     | '/estrutura'
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/cargas'
+    | '/cases'
     | '/diferenciais'
     | '/empresa'
     | '/estrutura'
@@ -135,6 +146,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/cargas'
+    | '/cases'
     | '/diferenciais'
     | '/empresa'
     | '/estrutura'
@@ -148,6 +160,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CargasRoute: typeof CargasRoute
+  CasesRoute: typeof CasesRoute
   DiferenciaisRoute: typeof DiferenciaisRoute
   EmpresaRoute: typeof EmpresaRoute
   EstruturaRoute: typeof EstruturaRoute
@@ -170,6 +183,13 @@ declare module '@tanstack/react-router' {
       path: '/cargas'
       fullPath: '/cargas'
       preLoaderRoute: typeof CargasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/diferenciais': {
@@ -248,6 +268,7 @@ const SolucoesRouteWithChildren = SolucoesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CargasRoute: CargasRoute,
+  CasesRoute: CasesRoute,
   DiferenciaisRoute: DiferenciaisRoute,
   EmpresaRoute: EmpresaRoute,
   EstruturaRoute: EstruturaRoute,
