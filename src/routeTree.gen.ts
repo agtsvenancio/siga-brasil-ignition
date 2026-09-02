@@ -17,6 +17,7 @@ import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as DiferenciaisRouteImport } from './routes/diferenciais'
 import { Route as EmpresaRouteImport } from './routes/empresa'
 import { Route as EstruturaRouteImport } from './routes/estrutura'
+import { Route as OrcamentoRouteImport } from './routes/orcamento'
 import { Route as ProcessoRouteImport } from './routes/processo'
 import { Route as SegmentosRouteImport } from './routes/segmentos'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
@@ -63,6 +64,11 @@ const EstruturaRoute = EstruturaRouteImport.update({
   path: '/estrutura',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrcamentoRoute = OrcamentoRouteImport.update({
+  id: '/orcamento',
+  path: '/orcamento',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProcessoRoute = ProcessoRouteImport.update({
   id: '/processo',
   path: '/processo',
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/diferenciais': typeof DiferenciaisRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
+  '/orcamento': typeof OrcamentoRoute
   '/processo': typeof ProcessoRoute
   '/segmentos': typeof SegmentosRoute
   '/solucoes': typeof SolucoesRouteWithChildren
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/diferenciais': typeof DiferenciaisRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
+  '/orcamento': typeof OrcamentoRoute
   '/processo': typeof ProcessoRoute
   '/segmentos': typeof SegmentosRoute
   '/solucoes/$slug': typeof SolucoesSlugRoute
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/diferenciais': typeof DiferenciaisRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
+  '/orcamento': typeof OrcamentoRoute
   '/processo': typeof ProcessoRoute
   '/segmentos': typeof SegmentosRoute
   '/solucoes': typeof SolucoesRouteWithChildren
@@ -145,6 +154,7 @@ export interface FileRouteTypes {
     | '/diferenciais'
     | '/empresa'
     | '/estrutura'
+    | '/orcamento'
     | '/processo'
     | '/segmentos'
     | '/solucoes'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/diferenciais'
     | '/empresa'
     | '/estrutura'
+    | '/orcamento'
     | '/processo'
     | '/segmentos'
     | '/solucoes/$slug'
@@ -174,6 +185,7 @@ export interface FileRouteTypes {
     | '/diferenciais'
     | '/empresa'
     | '/estrutura'
+    | '/orcamento'
     | '/processo'
     | '/segmentos'
     | '/solucoes'
@@ -190,6 +202,7 @@ export interface RootRouteChildren {
   DiferenciaisRoute: typeof DiferenciaisRoute
   EmpresaRoute: typeof EmpresaRoute
   EstruturaRoute: typeof EstruturaRoute
+  OrcamentoRoute: typeof OrcamentoRoute
   ProcessoRoute: typeof ProcessoRoute
   SegmentosRoute: typeof SegmentosRoute
   SolucoesRoute: typeof SolucoesRouteWithChildren
@@ -253,6 +266,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EstruturaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/orcamento': {
+      id: '/orcamento'
+      path: '/orcamento'
+      fullPath: '/orcamento'
+      preLoaderRoute: typeof OrcamentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/processo': {
       id: '/processo'
       path: '/processo'
@@ -314,6 +334,7 @@ const rootRouteChildren: RootRouteChildren = {
   DiferenciaisRoute: DiferenciaisRoute,
   EmpresaRoute: EmpresaRoute,
   EstruturaRoute: EstruturaRoute,
+  OrcamentoRoute: OrcamentoRoute,
   ProcessoRoute: ProcessoRoute,
   SegmentosRoute: SegmentosRoute,
   SolucoesRoute: SolucoesRouteWithChildren,
