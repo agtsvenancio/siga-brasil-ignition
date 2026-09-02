@@ -37,7 +37,7 @@ export function SiteHeader() {
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
                 activeProps={{ className: "text-graphite after:scale-x-100" }}
-                className="relative px-3 py-2 text-sm font-medium text-muted-foreground transition-colors after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-graphite hover:after:scale-x-100"
+                className="relative whitespace-nowrap px-3 py-2 text-sm font-medium text-muted-foreground transition-colors after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-graphite hover:after:scale-x-100"
               >
                 {item.label}
               </Link>
@@ -58,7 +58,6 @@ export function SiteHeader() {
               aria-label={open ? "Fechar menu" : "Abrir menu"}
               className="inline-flex size-11 items-center justify-center rounded-full border border-border text-graphite xl:hidden"
             >
-              {open ? <Menu className="size-5 hidden" /> : null}
               {open ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>
           </div>
