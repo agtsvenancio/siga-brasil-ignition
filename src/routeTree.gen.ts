@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CargasRouteImport } from './routes/cargas'
 import { Route as EmpresaRouteImport } from './routes/empresa'
 import { Route as EstruturaRouteImport } from './routes/estrutura'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
@@ -19,6 +20,11 @@ import { Route as SolucoesSlugRouteImport } from './routes/solucoes.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CargasRoute = CargasRouteImport.update({
+  id: '/cargas',
+  path: '/cargas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmpresaRoute = EmpresaRouteImport.update({
@@ -49,6 +55,7 @@ const SolucoesSlugRoute = SolucoesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cargas': typeof CargasRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
   '/solucoes': typeof SolucoesRouteWithChildren
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cargas': typeof CargasRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
   '/solucoes/$slug': typeof SolucoesSlugRoute
@@ -65,6 +73,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cargas': typeof CargasRoute
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
   '/solucoes': typeof SolucoesRouteWithChildren
@@ -75,16 +84,24 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/cargas'
     | '/empresa'
     | '/estrutura'
     | '/solucoes'
     | '/solucoes/$slug'
     | '/solucoes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/empresa' | '/estrutura' | '/solucoes/$slug' | '/solucoes'
+  to:
+    | '/'
+    | '/cargas'
+    | '/empresa'
+    | '/estrutura'
+    | '/solucoes/$slug'
+    | '/solucoes'
   id:
     | '__root__'
     | '/'
+    | '/cargas'
     | '/empresa'
     | '/estrutura'
     | '/solucoes'
@@ -94,6 +111,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CargasRoute: typeof CargasRoute
   EmpresaRoute: typeof EmpresaRoute
   EstruturaRoute: typeof EstruturaRoute
   SolucoesRoute: typeof SolucoesRouteWithChildren
@@ -106,6 +124,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cargas': {
+      id: '/cargas'
+      path: '/cargas'
+      fullPath: '/cargas'
+      preLoaderRoute: typeof CargasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/empresa': {
@@ -162,6 +187,7 @@ const SolucoesRouteWithChildren = SolucoesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CargasRoute: CargasRoute,
   EmpresaRoute: EmpresaRoute,
   EstruturaRoute: EstruturaRoute,
   SolucoesRoute: SolucoesRouteWithChildren,
