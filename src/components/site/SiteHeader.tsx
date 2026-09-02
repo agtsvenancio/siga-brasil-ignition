@@ -12,9 +12,9 @@ export function SiteHeader() {
     <>
 
       <header className="sticky top-0 z-50 border-b border-border/80 bg-background/95 backdrop-blur">
-        <div className="container-site flex h-18 items-center justify-between gap-4 py-3">
+        <div className="container-site flex h-24 items-center justify-between gap-4 py-3">
           <Link to="/" className="flex items-center" aria-label="Siga Brasil Transportes — página inicial">
-            <img src={logo} alt="Siga Brasil Transportes" className="h-11 w-auto md:h-12" />
+            <img src={logo} alt="Siga Brasil Transportes" className="h-14 w-auto md:h-18" />
           </Link>
 
           <nav aria-label="Principal" className="hidden items-center gap-1 xl:flex">
