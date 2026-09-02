@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as EmpresaRouteImport } from './routes/empresa'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as SolucoesIndexRouteImport } from './routes/solucoes.index'
+import { Route as SolucoesSlugRouteImport } from './routes/solucoes.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,16 +35,23 @@ const SolucoesIndexRoute = SolucoesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => SolucoesRoute,
 } as any)
+const SolucoesSlugRoute = SolucoesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => SolucoesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/empresa': typeof EmpresaRoute
   '/solucoes': typeof SolucoesRouteWithChildren
+  '/solucoes/$slug': typeof SolucoesSlugRoute
   '/solucoes/': typeof SolucoesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/empresa': typeof EmpresaRoute
+  '/solucoes/$slug': typeof SolucoesSlugRoute
   '/solucoes': typeof SolucoesIndexRoute
 }
 export interface FileRoutesById {
@@ -51,14 +59,21 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/empresa': typeof EmpresaRoute
   '/solucoes': typeof SolucoesRouteWithChildren
+  '/solucoes/$slug': typeof SolucoesSlugRoute
   '/solucoes/': typeof SolucoesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/empresa' | '/solucoes' | '/solucoes/'
+  fullPaths: '/' | '/empresa' | '/solucoes' | '/solucoes/$slug' | '/solucoes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/empresa' | '/solucoes'
-  id: '__root__' | '/' | '/empresa' | '/solucoes' | '/solucoes/'
+  to: '/' | '/empresa' | '/solucoes/$slug' | '/solucoes'
+  id:
+    | '__root__'
+    | '/'
+    | '/empresa'
+    | '/solucoes'
+    | '/solucoes/$slug'
+    | '/solucoes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -97,14 +112,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolucoesIndexRouteImport
       parentRoute: typeof SolucoesRoute
     }
+    '/solucoes/$slug': {
+      id: '/solucoes/$slug'
+      path: '/$slug'
+      fullPath: '/solucoes/$slug'
+      preLoaderRoute: typeof SolucoesSlugRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
   }
 }
 
 interface SolucoesRouteChildren {
+  SolucoesSlugRoute: typeof SolucoesSlugRoute
   SolucoesIndexRoute: typeof SolucoesIndexRoute
 }
 
 const SolucoesRouteChildren: SolucoesRouteChildren = {
+  SolucoesSlugRoute: SolucoesSlugRoute,
   SolucoesIndexRoute: SolucoesIndexRoute,
 }
 
