@@ -22,7 +22,7 @@ export function Section({
       className={cn(
         "py-16 md:py-24",
         tone === "surface" && "bg-surface",
-        tone === "dark" && "bg-graphite text-background",
+        tone === "dark" && "bg-ink text-background",
         className,
       )}
     >
@@ -31,15 +31,32 @@ export function Section({
   );
 }
 
+export function SbTitle({ title, highlight }: { title: string; highlight?: string | undefined }) {
+  return (
+    <>
+      {title}
+      {highlight ? (
+        <>
+          {" "}
+          <span className="hl">{highlight}</span>
+        </>
+      ) : null}
+    </>
+  );
+}
+
 export function SectionHeading({
   eyebrow,
   title,
+  highlight,
   description,
   align = "left",
   dark = false,
 }: {
   eyebrow?: string;
   title: string;
+  /** Trecho final do título destacado em negrito amarelo */
+  highlight?: string;
   description?: string;
   align?: "left" | "center";
   dark?: boolean;
@@ -54,7 +71,9 @@ export function SectionHeading({
       {eyebrow ? (
         <p className={cn("rule-y", dark ? "eyebrow-on-dark" : "eyebrow")}>{eyebrow}</p>
       ) : null}
-      <h2 className="mt-4 text-3xl leading-[1.1] md:text-4xl lg:text-5xl">{title}</h2>
+      <h2 className="title-sb mt-5 text-3xl leading-[1.12] md:text-4xl lg:text-5xl">
+        <SbTitle title={title} highlight={highlight} />
+      </h2>
       {description ? (
         <p
           className={cn(
@@ -134,29 +153,33 @@ export function WhatsappLink({
 export function PageHero({
   eyebrow,
   title,
+  highlight,
   description,
   image,
   imageAlt,
 }: {
   eyebrow: string;
   title: string;
+  highlight?: string;
   description: string;
   image: string;
   imageAlt: string;
 }) {
   return (
-    <header className="relative overflow-hidden bg-graphite text-background">
+    <header className="relative overflow-hidden bg-ink text-background">
       <img
         src={image}
         alt={imageAlt}
         className="absolute inset-0 size-full object-cover opacity-25"
         loading="eager"
       />
-      <div className="absolute inset-0 bg-linear-to-r from-graphite via-graphite/90 to-graphite/40" />
+      <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/90 to-ink/40" />
       <div className="container-site relative py-20 md:py-28">
         <Reveal className="max-w-3xl">
           <p className="eyebrow-on-dark rule-y">{eyebrow}</p>
-          <h1 className="mt-5 text-4xl leading-[1.05] md:text-5xl lg:text-6xl">{title}</h1>
+          <h1 className="title-sb mt-5 text-4xl leading-[1.08] md:text-5xl lg:text-6xl">
+            <SbTitle title={title} highlight={highlight} />
+          </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-background/75 md:text-lg">
             {description}
           </p>
@@ -172,8 +195,8 @@ export function PageHero({
 }
 
 export function CtaBand({
-  title = "Precisa mover uma carga que não pode dar errado?",
-  text = "Envie os dados da operação e receba um plano com veículo, equipe e cronograma adequados.",
+  title = "Sua carga exige cuidado. A solução começa aqui.",
+  text = "Solicite uma avaliação da sua operação e receba um plano com veículo, equipe e cronograma adequados.",
 }: {
   title?: string;
   text?: string;

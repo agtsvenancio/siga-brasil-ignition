@@ -1,5 +1,6 @@
-import { MessageCircle, Phone } from "lucide-react";
-import { contact, whatsappUrl } from "@/lib/site";
+import { Link } from "@tanstack/react-router";
+import { FileText, Phone } from "lucide-react";
+import { contact } from "@/lib/site";
 
 export function MobileActionBar() {
   return (
@@ -12,15 +13,13 @@ export function MobileActionBar() {
           <Phone className="size-4" aria-hidden="true" />
           Ligar
         </a>
-        <a
-          href={whatsappUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/orcamento"
           className="flex min-h-14 items-center justify-center gap-2 bg-primary text-sm font-semibold text-primary-foreground"
         >
-          <MessageCircle className="size-4" aria-hidden="true" />
-          WhatsApp
-        </a>
+          <FileText className="size-4" aria-hidden="true" />
+          Solicitar orçamento
+        </Link>
       </div>
     </div>
   );

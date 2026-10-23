@@ -27,14 +27,16 @@ function Segmentos() {
     <>
       <PageHero
         eyebrow="Segmentos"
-        title="Setores que dependem de movimentação bem executada"
+        title="Setores que dependem de"
+        highlight="movimentação bem executada"
         description="Da obra à planta industrial, cada segmento tem restrições próprias de acesso, horário e prazo."
-        image={photos.icamento}
-        imageAlt="Içamento de estrutura metálica em área industrial"
+        image={photos.icamentoQuiosque}
+        imageAlt="Munck da Siga Brasil içando quiosque em área pública"
       />
 
       <Section>
-        <SectionHeading eyebrow="Atendimento" title="Onde a Siga Brasil atua" />
+        <SectionHeading eyebrow="Atendimento" title="Onde a Siga Brasil"
+          highlight="atua" />
         <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {segments.map((s, i) => (
             <Reveal key={s.number} delay={i * 60} as="li">

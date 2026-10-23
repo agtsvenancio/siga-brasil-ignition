@@ -29,9 +29,10 @@ function Orcamento() {
     <>
       <PageHero
         eyebrow="Orçamento"
-        title="Descreva a operação e receba uma análise técnica"
+        title="Solicite uma avaliação da"
+        highlight="sua operação"
         description="Informe carga, local, acesso e prazo. A equipe define veículo, equipamento e cronograma adequados."
-        image={photos.gerador}
+        image={photos.posicionamentoGerador}
         imageAlt="Operação de içamento de gerador pela equipe Siga Brasil"
       />
 
@@ -72,7 +73,7 @@ function Orcamento() {
                 </ul>
                 <div className="mt-8 border-t border-background/15 pt-6">
                   <p className="text-sm text-background/70">
-                    Prefere falar direto? Chame no WhatsApp {contact.phoneLabel}.
+                    Prefere falar direto? Chame no WhatsApp {contact.whatsappLabel}.
                   </p>
                   <WhatsappLink variant="primary" className="mt-4 w-full" />
                 </div>

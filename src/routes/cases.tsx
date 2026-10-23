@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CtaBand, PageHero, Section, SectionHeading } from "@/components/site/Primitives";
 import { Reveal } from "@/components/site/Reveal";
-import { cases, photos } from "@/lib/site";
+import { cases, operations, photos } from "@/lib/site";
 
 const title = "Cases e Operações | Siga Brasil Transportes";
 const description =
@@ -27,14 +27,15 @@ function Cases() {
     <>
       <PageHero
         eyebrow="Cases"
-        title="Operações executadas, resultados controlados"
+        title="Operações executadas,"
+        highlight="resultados controlados"
         description="Registros de operações realizadas pela equipe da Siga Brasil, com desafio e resultado descritos de forma objetiva."
-        image={photos.carregamento}
+        image={photos.operacaoCampo}
         imageAlt="Carregamento de equipamento industrial pela equipe da Siga Brasil"
       />
 
       <Section>
-        <SectionHeading eyebrow="Operações" title="Desafio e resultado" />
+        <SectionHeading eyebrow="Cases" title="Desafio e" highlight="resultado" />
         <div className="mt-12 grid gap-8 lg:grid-cols-3">
           {cases.map((c, i) => (
             <Reveal key={c.title} delay={i * 80} as="article">
@@ -72,6 +73,24 @@ function Cases() {
             informações detalhadas sobre operações semelhantes à sua, fale com a equipe.
           </p>
         </Reveal>
+      </Section>
+
+      <Section tone="dark">
+        <SectionHeading
+          dark
+          eyebrow="Operações reais"
+          title="Diferentes cargas."
+          highlight="Operações planejadas."
+        />
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
+          {operations.map((o, i) => (
+            <Reveal key={o.title} delay={i * 80} as="article">
+              <img src={o.image} alt={o.alt} loading="lazy" className="aspect-4/3 w-full rounded-xl object-cover" />
+              <h2 className="mt-5 text-xl font-semibold text-primary">{o.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-background/80">{o.text}</p>
+            </Reveal>
+          ))}
+        </div>
       </Section>
 
       <CtaBand />

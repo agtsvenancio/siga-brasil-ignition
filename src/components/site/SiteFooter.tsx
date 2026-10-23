@@ -1,17 +1,20 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { contact, logoWhite, mainNav, solutions } from "@/lib/site";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { brand, contact, logoWhite, mainNav, solutions, SOLUTIONS_MENU, whatsappUrl } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-graphite-deep text-background">
+    <footer className="bg-ink text-background">
       <div className="hairline-grid">
         <div className="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <img src={logoWhite} alt="Siga Brasil Transportes" className="h-12 w-auto" />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-background/65">
-              Transporte, remoção técnica, içamento e armazenagem para operações
-              industriais em todo o Brasil.
+            <img src={logoWhite} alt="Siga Brasil Transportes" className="h-14 w-auto" />
+            <p className="mt-5 max-w-xs text-lg font-bold leading-snug text-primary">
+              {brand.tagline}
+            </p>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-background/65">
+              Transporte rodoviário, içamento, remoção e armazenagem. Base em Guarulhos/SP,
+              atuação nacional.
             </p>
           </div>
 
@@ -20,7 +23,7 @@ export function SiteFooter() {
               Navegação
             </h3>
             <ul className="mt-5 space-y-2.5 text-sm">
-              {mainNav.map((i) => (
+              {mainNav.filter((i) => i.to !== SOLUTIONS_MENU).map((i) => (
                 <li key={i.to}>
                   <Link to={i.to} className="text-background/70 transition-colors hover:text-primary">
                     {i.label}
@@ -71,6 +74,12 @@ export function SiteFooter() {
                 </a>
               </li>
               <li className="flex gap-3">
+                <MessageCircle className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+                <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                  Chamar no WhatsApp
+                </a>
+              </li>
+              <li className="flex gap-3">
                 <Mail className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
                 <a href={`mailto:${contact.email}`} className="hover:text-primary">
                   {contact.email}
@@ -91,7 +100,13 @@ export function SiteFooter() {
 
       <div className="border-t border-background/10">
         <div className="container-site flex flex-col gap-2 py-6 text-xs text-background/50 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Siga Brasil Transportes. Todos os direitos reservados.</p>
+          <p>
+            © {new Date().getFullYear()} Siga Brasil Transportes • CNPJ {contact.cnpj}. Todos os direitos
+            reservados.{" "}
+            <Link to="/politica-de-privacidade" className="underline-offset-2 hover:text-primary hover:underline">
+              Política de Privacidade
+            </Link>
+          </p>
           <p>{contact.site} • {contact.coverage}</p>
         </div>
       </div>

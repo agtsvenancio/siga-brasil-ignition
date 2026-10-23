@@ -27,14 +27,16 @@ function Processo() {
     <>
       <PageHero
         eyebrow="Como trabalhamos"
-        title="Um método antes de qualquer movimento"
+        title="Um método antes de"
+        highlight="qualquer movimento"
         description="Seis etapas que transformam um pedido em uma operação previsível, do primeiro contato à entrega."
-        image={photos.gerador}
-        imageAlt="Equipe da Siga Brasil posicionando gerador com caminhão Munck"
+        image={photos.icamentoRecygases}
+        imageAlt="Munck da Siga Brasil içando rack de cilindros sobre a carroceria"
       />
 
       <Section>
-        <SectionHeading eyebrow="Processo operacional" title="As seis etapas" />
+        <SectionHeading eyebrow="Processo operacional" title="As seis"
+          highlight="etapas" />
         <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {processSteps.map((s, i) => (
             <Reveal key={s.number} delay={i * 70} as="li">
@@ -67,7 +69,8 @@ function Processo() {
           </Reveal>
           <SectionHeading
             eyebrow="Segurança"
-            title="Planejamento é a principal medida de segurança"
+            title="Planejamento é a principal"
+            highlight="medida de segurança"
             description="Antes da execução, avaliamos acessos, peso, dimensões e riscos. Durante a operação, o controle é mantido em cada fase — com equipe treinada, equipamentos adequados e comunicação constante."
           />
         </div>

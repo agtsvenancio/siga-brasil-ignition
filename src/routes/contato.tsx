@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import {
   CtaBand,
   PageHero,
@@ -13,7 +13,7 @@ import { contact, faqs, photos } from "@/lib/site";
 
 const title = "Contato | Siga Brasil Transportes — Guarulhos/SP";
 const description =
-  "Fale com a Siga Brasil Transportes: (11) 99935-2524, tiago@sigabr.com.br. Rua Silvestre Vasconcelos Calmon, 444 — Vila Pedro Moreira, Guarulhos/SP.";
+  "Fale com a Siga Brasil Transportes: (11) 2358-2250 (telefone e WhatsApp), contato@sigabr.com.br. Rua Silvestre Vasconcelos Calmon, 444 — Vila Pedro Moreira, Guarulhos/SP.";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
@@ -52,23 +52,30 @@ function Contato() {
     <>
       <PageHero
         eyebrow="Contato"
-        title="Fale com quem vai planejar a sua operação"
+        title="Sua carga exige cuidado."
+        highlight="A solução começa aqui."
         description="Atendimento em todo o Brasil, com base operacional em Guarulhos/SP."
-        image={photos.transporte}
-        imageAlt="Caminhão Munck da Siga Brasil em operação"
+        image={photos.operacaoCampo}
+        imageAlt="Carreta com Munck da Siga Brasil em operação de campo"
       />
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionHeading eyebrow="Canais diretos" title="Como falar com a Siga Brasil" />
+            <SectionHeading eyebrow="Fale conosco" title="Como falar com a" highlight="Siga Brasil" />
             <ul className="mt-8 grid gap-4">
               {[
                 {
                   icon: Phone,
-                  label: "Telefone / WhatsApp",
+                  label: "Telefone",
                   value: contact.phoneLabel,
                   href: `tel:+${contact.phoneRaw}`,
+                },
+                {
+                  icon: MessageCircle,
+                  label: "WhatsApp",
+                  value: contact.whatsappLabel,
+                  href: `https://wa.me/${contact.whatsappRaw}`,
                 },
                 {
                   icon: Mail,

@@ -5,8 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * SIGA BRASIL TRANSPORTES — Design System
- * Amarelo #FCC900 | Grafite #383838 | Branco #FFFFFF
+ * SIGA BRASIL TRANSPORTES — Design System (Apresentação Institucional 2026)
+ * Amarelo #FCC900 | Grafite #383838 | Grafite escuro #262626 | Off-white #F9F9F7
+ * Tipografia: Noto Sans Display — títulos em peso regular com destaque
+ * em negrito amarelo; rótulos em caixa-alta com barra amarela.
  */
 
 @theme inline {
@@ -49,6 +51,8 @@
   --color-graphite-deep: var(--graphite-deep);
   --color-yellow-brand: var(--yellow-brand);
   --color-yellow-deep: var(--yellow-deep);
+  --color-ink: var(--ink);
+  --color-ink-card: var(--ink-card);
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
 
@@ -78,7 +82,11 @@
   --graphite: oklch(0.325 0 0);
   --graphite-soft: oklch(0.42 0 0);
   --graphite-deep: oklch(0.22 0 0);
-  --surface: oklch(0.972 0.001 106);
+  /* Slides escuros da apresentação: #262626 com cards #333333 */
+  --ink: oklch(0.262 0 0);
+  --ink-card: oklch(0.315 0 0);
+  /* Fundo claro da apresentação: #F9F9F7 */
+  --surface: oklch(0.981 0.002 106);
   --surface-strong: oklch(0.94 0.002 106);
 
   --background: oklch(1 0 0);
@@ -124,6 +132,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem; /* altura da navbar fixa */
   }
 
   body {
@@ -162,9 +171,9 @@
   gap: 0.5rem;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--graphite-soft);
+  color: var(--graphite);
 }
 
 @utility eyebrow-on-dark {
@@ -173,20 +182,42 @@
   gap: 0.5rem;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--yellow-brand);
+  color: oklch(1 0 0);
 }
 
-/* Thin yellow rule used before eyebrows */
+/* Barra amarela usada antes dos rótulos (padrão da apresentação) */
 @utility rule-y {
+  gap: 0.875rem;
+
   &::before {
     content: "";
     display: inline-block;
     width: 2rem;
-    height: 2px;
+    height: 0.5rem;
+    border-radius: 1px;
     background: var(--yellow-brand);
   }
+}
+
+/* Títulos: peso regular com destaque em negrito amarelo */
+@utility title-sb {
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+@utility hl {
+  font-weight: 700;
+  color: var(--yellow-brand);
+}
+
+/* Linha amarela curta (rodapé dos slides) */
+@utility accent-line {
+  display: block;
+  width: 8.5rem;
+  height: 0.25rem;
+  background: var(--yellow-brand);
 }
 
 @utility container-site {

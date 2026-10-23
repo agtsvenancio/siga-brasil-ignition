@@ -1,5 +1,6 @@
 import { useRef, useState, type FormEvent } from "react";
 import { Send } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { z } from "zod";
 import { cn } from "@/lib/utils";
 import { btn } from "./Primitives";
@@ -319,6 +320,14 @@ export function QuoteForm() {
         <Send className="size-4" aria-hidden="true" />
         Enviar solicitação
       </button>
+
+      <p className="text-xs leading-relaxed text-muted-foreground">
+        Ao enviar, seus dados são usados apenas para responder a esta solicitação, conforme a{" "}
+        <Link to="/politica-de-privacidade" className="font-medium text-graphite underline underline-offset-2 hover:text-primary">
+          Política de Privacidade
+        </Link>
+        .
+      </p>
 
       {sent ? (
         <p role="status" className="rounded-xl bg-surface px-4 py-3 text-sm text-graphite">

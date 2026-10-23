@@ -27,16 +27,18 @@ function Cargas() {
     <>
       <PageHero
         eyebrow="Tipos de carga"
-        title="Cada carga define o método"
+        title="Diferentes cargas."
+        highlight="Operações planejadas."
         description="Peso, dimensão, fragilidade e acesso determinam o veículo, a amarração e o plano de movimentação."
-        image={photos.cargaMwm}
-        imageAlt="Carga industrial embalada aguardando movimentação em galpão"
+        image={photos.transporteTanque}
+        imageAlt="Caminhão da Siga Brasil transportando tanque industrial"
       />
 
       <Section>
         <SectionHeading
           eyebrow="O que movimentamos"
-          title="Cargas atendidas pela Siga Brasil"
+          title="Cargas atendidas pela"
+          highlight="Siga Brasil"
         />
         <div className="mt-12 grid gap-px overflow-hidden rounded-3xl bg-border sm:grid-cols-2 lg:grid-cols-3">
           {cargoCategories.map((c, i) => (
@@ -57,13 +59,14 @@ function Cargas() {
             <SectionHeading
               dark
               eyebrow="Cargas especiais"
-              title="Operações que exigem estudo prévio"
+              title="Operações que exigem"
+              highlight="estudo prévio"
               description="Cargas excedentes, ambientes com acesso restrito e equipamentos sensíveis são tratados caso a caso, com definição de rota, apoio e cronograma."
             />
           </div>
           <Reveal delay={100}>
             <img
-              src={photos.carregamento}
+              src={photos.seguranca}
               alt="Carregamento de equipamento industrial de grande porte"
               loading="lazy"
               className="aspect-4/3 w-full rounded-3xl object-cover"

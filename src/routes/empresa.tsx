@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CheckCircle2 } from "lucide-react";
 import { CtaBand, PageHero, Section, SectionHeading } from "@/components/site/Primitives";
 import { Reveal } from "@/components/site/Reveal";
-import { differentials, photos } from "@/lib/site";
+import { contact, differentials, institutional, photos, stats } from "@/lib/site";
 
 const title = "A Empresa | Siga Brasil Transportes";
 const description =
@@ -23,23 +22,16 @@ export const Route = createFileRoute("/empresa")({
   component: Empresa,
 });
 
-const values = [
-  { title: "Segurança", text: "Procedimentos e equipamentos corretos em cada etapa." },
-  { title: "Compromisso", text: "Prazo acordado é prazo planejado." },
-  { title: "Transparência", text: "Informação clara antes, durante e depois da operação." },
-  { title: "Excelência operacional", text: "Execução técnica, sem improviso." },
-  { title: "Respeito ao cliente", text: "Cuidado com a carga, o ambiente e as pessoas." },
-];
-
 function Empresa() {
   return (
     <>
       <PageHero
         eyebrow="A empresa"
-        title="Movimentar carga pesada é uma decisão técnica"
-        description="A Siga Brasil nasceu da rotina de operações que não admitem erro: equipamentos caros, acessos difíceis e prazos que impactam a produção do cliente."
-        image={photos.munck}
-        imageAlt="Caminhão Munck da Siga Brasil em pátio industrial"
+        title="Precisão técnica para"
+        highlight="operações complexas"
+        description="Transporte rodoviário, remoção técnica, içamento, movimentação de cargas e armazenagem — com equipe qualificada, equipamentos adequados e planejamento."
+        image={photos.munckDupla}
+        imageAlt="Dois caminhões Munck da Siga Brasil içando equipamento industrial"
       />
 
       <Section>
@@ -47,8 +39,9 @@ function Empresa() {
           <div>
             <SectionHeading
               eyebrow="Quem somos"
-              title="Estrutura própria, equipe treinada e análise antes da execução"
-              description="Atuamos no transporte rodoviário, na remoção técnica, no içamento com Munck e na armazenagem de cargas industriais, com atendimento em todo o Brasil e base operacional em Guarulhos/SP."
+              title="Estrutura própria, equipe treinada e"
+              highlight="análise antes da execução"
+              description="A Siga Brasil Transportes atua em transporte rodoviário, remoção técnica, içamento, movimentação de cargas e armazenagem. Equipe qualificada, equipamentos adequados e planejamento para demandas de pequeno, médio e grande porte."
             />
             <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground md:text-base">
               <p>
@@ -65,14 +58,14 @@ function Empresa() {
           </div>
           <Reveal delay={100} className="grid gap-4 sm:grid-cols-2">
             <img
-              src={photos.icamento}
-              alt="Içamento de estrutura metálica entre galpões industriais"
+              src={photos.seguranca}
+              alt="Operador com EPI acompanhando içamento com caminhão Munck da Siga Brasil"
               loading="lazy"
               className="aspect-3/4 w-full rounded-3xl object-cover shadow-card sm:mt-10"
             />
             <img
-              src={photos.remocao}
-              alt="Equipe realizando remoção técnica de equipamento embalado"
+              src={photos.equipeMaquina}
+              alt="Equipe da Siga Brasil realizando remoção técnica de máquina industrial"
               loading="lazy"
               className="aspect-3/4 w-full rounded-3xl object-cover shadow-card"
             />
@@ -81,37 +74,40 @@ function Empresa() {
       </Section>
 
       <Section tone="surface">
-        <div className="grid gap-8 md:grid-cols-3">
-          {[
-            {
-              t: "Missão",
-              d: "Executar operações de transporte e movimentação de cargas com segurança, planejamento e respeito ao prazo do cliente.",
-            },
-            {
-              t: "Visão",
-              d: "Ser referência em operações técnicas de transporte, içamento e remoção para a indústria brasileira.",
-            },
-            {
-              t: "Valores",
-              d: "Segurança, compromisso, transparência, excelência operacional e respeito ao cliente.",
-            },
-          ].map((i, idx) => (
-            <Reveal key={i.t} delay={idx * 80} as="article">
-              <div className="h-full rounded-3xl border-t-4 border-primary bg-card p-8 shadow-card">
-                <h2 className="text-2xl">{i.t}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{i.d}</p>
+        <SectionHeading eyebrow="Missão, visão e valores" title="O que orienta" highlight="cada operação" />
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {institutional.map((i, idx) => (
+            <Reveal key={i.title} delay={idx * 70} as="article">
+              <div className="h-full rounded-2xl border-t-4 border-primary bg-card p-7 shadow-card">
+                <h2 className="text-xl font-bold">{i.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{i.text}</p>
               </div>
             </Reveal>
           ))}
         </div>
+        <Reveal delay={120} className="mt-10">
+          <div className="rounded-xl bg-primary px-6 py-5 text-primary-foreground">
+            <p className="text-base font-bold uppercase md:text-lg">
+              Base em Guarulhos/SP. Atuação nacional.
+            </p>
+            <p className="mt-1 text-sm md:text-base">{contact.coverageDetail}</p>
+          </div>
+        </Reveal>
+      </Section>
 
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {values.map((v, i) => (
-            <Reveal key={v.title} delay={i * 60} as="li">
-              <div className="h-full rounded-2xl bg-card p-6">
-                <CheckCircle2 className="size-5 text-primary" aria-hidden="true" />
-                <h3 className="mt-4 text-base font-bold text-graphite">{v.title}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{v.text}</p>
+      <Section tone="dark">
+        <SectionHeading
+          dark
+          eyebrow="Siga Brasil em números"
+          title="Estrutura que transmite"
+          highlight="capacidade"
+        />
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 50} as="li">
+              <div className="h-full rounded-2xl bg-ink-card p-6">
+                <p className="text-2xl font-bold text-primary md:text-3xl">{s.value}</p>
+                <p className="mt-1.5 text-sm text-background/75">{s.label}</p>
               </div>
             </Reveal>
           ))}
@@ -119,7 +115,7 @@ function Empresa() {
       </Section>
 
       <Section>
-        <SectionHeading eyebrow="O que nos diferencia" title="Diferenciais aplicados em cada operação" />
+        <SectionHeading eyebrow="O que nos diferencia" title="Diferenciais aplicados em" highlight="cada operação" />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {differentials.map((d, i) => (
             <Reveal key={d.title} delay={i * 60} as="article">

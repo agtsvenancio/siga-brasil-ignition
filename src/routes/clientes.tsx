@@ -2,11 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Quote } from "lucide-react";
 import { CtaBand, PageHero, Section, SectionHeading } from "@/components/site/Primitives";
 import { Reveal } from "@/components/site/Reveal";
-import { clients, partnersVoices, photos } from "@/lib/site";
+import { ClientLogoGrid } from "@/components/site/ClientLogoGrid";
+import { cn } from "@/lib/utils";
+import { clients, photos, testimonials } from "@/lib/site";
 
 const title = "Clientes e Parceiros | Siga Brasil Transportes";
 const description =
-  "Empresas atendidas pela Siga Brasil Transportes em operações de transporte, remoção técnica, içamento e armazenagem.";
+  "MWM, Otis, Deutz, Andritz, Atlas Schindler, Chicago Pneumatic e outras empresas atendidas pela Siga Brasil Transportes em transporte, içamento, remoção e armazenagem.";
 
 export const Route = createFileRoute("/clientes")({
   head: () => ({
@@ -27,45 +29,48 @@ function Clientes() {
   return (
     <>
       <PageHero
-        eyebrow="Clientes"
-        title="Empresas que confiam suas cargas à Siga Brasil"
-        description="Indústrias, distribuidores e prestadores de serviço que dependem de operações bem executadas."
-        image={photos.cargaMwm}
-        imageAlt="Carga industrial de cliente atendido pela Siga Brasil"
+        eyebrow="Clientes e parceiros"
+        title="Empresas que confiam suas cargas à"
+        highlight="Siga Brasil"
+        description={`Indústrias, fabricantes de geradores, elevadores e equipamentos e prestadores de serviço — ${clients.length} clientes e parceiros atendidos.`}
+        image={photos.movimentacaoIndustrial}
+        imageAlt="Equipe da Siga Brasil movimentando máquina industrial em cliente"
       />
-
-      <Section>
-        <SectionHeading eyebrow="Parceiros" title="Clientes atendidos" />
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-3xl bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {clients.map((c, i) => (
-            <Reveal key={c} delay={i * 40} as="li" className="bg-card">
-              <div className="flex min-h-28 items-center justify-center p-8 text-center text-lg font-bold tracking-wide text-graphite-soft">
-                {c}
-              </div>
-            </Reveal>
-          ))}
-        </ul>
-      </Section>
 
       <Section tone="surface">
         <SectionHeading
-          eyebrow="Depoimentos"
-          title="Contatos que acompanham nossas operações"
-          description="Os depoimentos completos destes parceiros serão publicados aqui após autorização de cada empresa."
+          eyebrow="Clientes e parceiros"
+          title="Clientes e parceiros"
+          highlight="atendidos"
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {partnersVoices.map((p, i) => (
-            <Reveal key={p.name} delay={i * 70} as="article">
-              <figure className="flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-card">
-                <Quote className="size-7 text-primary" aria-hidden="true" />
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  Depoimento em processo de autorização.
+        <ClientLogoGrid className="mt-12" />
+      </Section>
+
+      <Section tone="dark">
+        <SectionHeading
+          dark
+          eyebrow="Depoimentos"
+          title="O que parceiros dizem"
+          highlight="sobre a Siga Brasil"
+        />
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+          {testimonials.map((t, i) => (
+            <Reveal
+              key={t.company}
+              delay={i * 60}
+              as="article"
+              className={cn("h-full", i < 2 ? "lg:col-span-3" : "lg:col-span-2")}
+            >
+              <figure className="flex h-full flex-col rounded-2xl bg-ink-card p-7">
+                <p className="text-sm font-bold uppercase tracking-[0.04em] text-primary">
+                  {t.company}
+                </p>
+                <blockquote className="mt-4 flex-1 text-base leading-relaxed text-background/90 md:text-lg">
+                  “{t.quote}”
                 </blockquote>
-                <figcaption className="mt-6 border-t border-border pt-4">
-                  <span className="block text-sm font-bold text-graphite">{p.name}</span>
-                  {p.company ? (
-                    <span className="block text-xs text-muted-foreground">{p.company}</span>
-                  ) : null}
+                <figcaption className="mt-6 flex items-center gap-2 text-sm font-bold">
+                  <Quote className="size-4 text-primary" aria-hidden="true" />
+                  {t.name}
                 </figcaption>
               </figure>
             </Reveal>

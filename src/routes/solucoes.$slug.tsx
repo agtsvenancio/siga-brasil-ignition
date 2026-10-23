@@ -72,7 +72,8 @@ function SolucaoDetalhe() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <SectionHeading eyebrow="O problema" title="O que está em jogo" description={s.problem} />
+            <SectionHeading eyebrow="O problema" title="O que está"
+              highlight="em jogo" description={s.problem} />
 
             <Reveal delay={80} className="mt-12">
               <h3 className="text-xl md:text-2xl">Quando contratar</h3>
@@ -144,7 +145,8 @@ function SolucaoDetalhe() {
       </Section>
 
       <Section tone="surface">
-        <SectionHeading eyebrow="Outras soluções" title="Combine com o restante da operação" />
+        <SectionHeading eyebrow="Outras soluções" title="Combine com o restante"
+          highlight="da operação" />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {others.map((o, i) => (
             <Reveal key={o.slug} delay={i * 70} as="article">

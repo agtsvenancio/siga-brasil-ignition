@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -14,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { MobileActionBar } from "@/components/site/MobileActionBar";
+import { WhatsappFloat } from "@/components/site/WhatsappFloat";
 import { contact } from "@/lib/site";
 
 function NotFoundComponent() {
@@ -38,7 +40,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -100,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap",
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
@@ -111,7 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "MovingCompany",
           name: "Siga Brasil Transportes",
-          telephone: "+55 11 99935-2524",
+          telephone: "+55 11 2358-2250",
           email: contact.email,
           areaServed: "BR",
           address: {
@@ -163,6 +165,7 @@ function RootComponent() {
       </main>
       <SiteFooter />
       <MobileActionBar />
+      <WhatsappFloat />
     </QueryClientProvider>
   );
 }

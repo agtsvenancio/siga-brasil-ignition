@@ -18,6 +18,7 @@ import { Route as DiferenciaisRouteImport } from './routes/diferenciais'
 import { Route as EmpresaRouteImport } from './routes/empresa'
 import { Route as EstruturaRouteImport } from './routes/estrutura'
 import { Route as OrcamentoRouteImport } from './routes/orcamento'
+import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as ProcessoRouteImport } from './routes/processo'
 import { Route as SegmentosRouteImport } from './routes/segmentos'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
@@ -69,6 +70,11 @@ const OrcamentoRoute = OrcamentoRouteImport.update({
   path: '/orcamento',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
+  id: '/politica-de-privacidade',
+  path: '/politica-de-privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProcessoRoute = ProcessoRouteImport.update({
   id: '/processo',
   path: '/processo',
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
   '/orcamento': typeof OrcamentoRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/processo': typeof ProcessoRoute
   '/segmentos': typeof SegmentosRoute
   '/solucoes': typeof SolucoesRouteWithChildren
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
   '/orcamento': typeof OrcamentoRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/processo': typeof ProcessoRoute
   '/segmentos': typeof SegmentosRoute
   '/solucoes/$slug': typeof SolucoesSlugRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/empresa': typeof EmpresaRoute
   '/estrutura': typeof EstruturaRoute
   '/orcamento': typeof OrcamentoRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/processo': typeof ProcessoRoute
   '/segmentos': typeof SegmentosRoute
   '/solucoes': typeof SolucoesRouteWithChildren
@@ -155,6 +164,7 @@ export interface FileRouteTypes {
     | '/empresa'
     | '/estrutura'
     | '/orcamento'
+    | '/politica-de-privacidade'
     | '/processo'
     | '/segmentos'
     | '/solucoes'
@@ -171,6 +181,7 @@ export interface FileRouteTypes {
     | '/empresa'
     | '/estrutura'
     | '/orcamento'
+    | '/politica-de-privacidade'
     | '/processo'
     | '/segmentos'
     | '/solucoes/$slug'
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/empresa'
     | '/estrutura'
     | '/orcamento'
+    | '/politica-de-privacidade'
     | '/processo'
     | '/segmentos'
     | '/solucoes'
@@ -203,6 +215,7 @@ export interface RootRouteChildren {
   EmpresaRoute: typeof EmpresaRoute
   EstruturaRoute: typeof EstruturaRoute
   OrcamentoRoute: typeof OrcamentoRoute
+  PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   ProcessoRoute: typeof ProcessoRoute
   SegmentosRoute: typeof SegmentosRoute
   SolucoesRoute: typeof SolucoesRouteWithChildren
@@ -273,6 +286,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrcamentoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/politica-de-privacidade': {
+      id: '/politica-de-privacidade'
+      path: '/politica-de-privacidade'
+      fullPath: '/politica-de-privacidade'
+      preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/processo': {
       id: '/processo'
       path: '/processo'
@@ -335,6 +355,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmpresaRoute: EmpresaRoute,
   EstruturaRoute: EstruturaRoute,
   OrcamentoRoute: OrcamentoRoute,
+  PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   ProcessoRoute: ProcessoRoute,
   SegmentosRoute: SegmentosRoute,
   SolucoesRoute: SolucoesRouteWithChildren,
