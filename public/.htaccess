@@ -8,9 +8,10 @@ RewriteEngine On
 # Libera a validação do certificado SSL (Let's Encrypt) — não mexer
 RewriteRule ^\.well-known/ - [L]
 
-# Ative as 2 linhas abaixo SOMENTE depois que o certificado SSL estiver ativo no painel:
-# RewriteCond %{HTTPS} off
-# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Força HTTPS (certificado Let's Encrypt ativo)
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # www -> sem www (opcional; descomente se quiser padronizar)
 # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
